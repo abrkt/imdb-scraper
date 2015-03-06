@@ -1,0 +1,22 @@
+{
+  "name": "imdb-scraper",
+  "version": "1.0.0",
+  "description": "Scraper for imdb.com",
+  "main": "imdb.js",
+  "scripts": {
+    "test": "node node_modules/.bin/mocha --timeout 30000"
+  },
+  "keywords": [
+    "imdb",
+    "movies"
+  ],
+  "author": "abrkt",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^2.1.0",
+    "chai-as-promised": "^4.2.0",
+    "cheerio": "^0.18.0",
+    "mocha": "^2.1.0",
+    "request": "^2.53.0"
+  }
+}
