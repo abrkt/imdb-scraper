@@ -15,8 +15,14 @@ describe('imdb', function() {
 
     describe('find()', function() {
       it('should find results for The Imitation Game', function() {
-        var epected = require('./TheImitationGameResults');
-        return expect(imdb.title.find('The Imitation Game')).to.eventually.deep.equal(epected);
+        var expected = require('./TheImitationGameResults');
+        return expect(imdb.title.find('The Imitation Game')).to.eventually.deep.equal(expected);
+      });
+    });
+
+    describe('first()', function() {
+      it('should return the first result for The Godfather', function() {
+        return expect(imdb.title.first('The Godfather')).to.eventually.deep.equal(require('./TheGodfather'));
       });
     });
   });
