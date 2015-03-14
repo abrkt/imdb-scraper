@@ -9,20 +9,51 @@ chai.use(chaiAsPromised);
 
 describe('imdb', function() {
   describe('title()', function() {
-    it('should scrap The Godfather data by id', function() {
-      return expect(imdb.title('tt0068646')).to.eventually.deep.equal(require('./TheGodfather'));
+    it('should scrap title data by id', function() {
+      return expect(imdb.title('tt0068646')).to.eventually.have.all.keys(
+        'id',
+        'name',
+        'poster',
+        'duration',
+        'genre',
+        'year',
+        'description',
+        'storyline',
+        'director',
+        'stars',
+        'rating'
+      );
+    });
+
+    it('reject invalid ids', function() {
+      return expect(imdb.title('imdb-scrapper')).to.be.rejectedWith(Error);
     });
 
     describe('find()', function() {
-      it('should find results for The Imitation Game', function() {
-        var expected = require('./TheImitationGameResults');
-        return expect(imdb.title.find('The Imitation Game')).to.eventually.deep.equal(expected);
+      it('should find results for valid movie name', function() {
+        return expect(imdb.title.find('The Imitation Game')).to.eventually.have.length(3);
+      });
+
+      it('should not find results for invalid movie name', function() {
+        return expect(imdb.title.find('imdb-scrapper')).to.eventually.have.length(0);
       });
     });
 
     describe('first()', function() {
-      it('should return the first result for The Godfather', function() {
-        return expect(imdb.title.first('The Godfather')).to.eventually.deep.equal(require('./TheGodfather'));
+      it('should return the first title data', function() {
+        return expect(imdb.title.first('The Godfather')).to.eventually.have.all.keys(
+          'id',
+          'name',
+          'poster',
+          'duration',
+          'genre',
+          'year',
+          'description',
+          'storyline',
+          'director',
+          'stars',
+          'rating'
+        );
       });
     });
   });
