@@ -2,6 +2,7 @@
   "name": "imdb-scraper",
   "version": "1.0.0",
   "description": "Scraper for imdb.com",
+  "repository": "https://github.com/abrkt/imdb-scraper.git",
   "main": "imdb.js",
   "scripts": {
     "test": "node node_modules/.bin/mocha --timeout 30000"
